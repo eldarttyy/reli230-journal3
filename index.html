@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Between the Lake and the Mountains</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long scroll; photo hero, felt-ornament bands, alternating cream and dark sections, one per prompt */
+:root {
+  --ink: #15110e; --cream: #f3e9da; --gold: #e8ab45; --gold-soft: #f2c878; --red: #8e231b; --felt: #57140f; --horn: #a8321f;
+  --text: #2c2420; --text-soft: #5f524a; --on-dark: #f3e9da; --on-dark-soft: #bfb3a6;
+  --display: "Cormorant Garamond", Georgia, serif; --body: "Jost", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; background: var(--cream); color: var(--text); font: 400 1.125rem/1.7 var(--body); }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.06; margin: 0; text-wrap: balance; }
+h1 em, h2 em, h3 em { font-style: italic; }
+p { margin: 0 0 1.1em; max-width: 65ch; }
+.label { font-size: .82rem; letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin: 0 0 22px; }
+
+header { position: sticky; top: 0; z-index: 5; background: rgba(21, 17, 14, .94); color: var(--on-dark); }
+header .wrap { max-width: none; padding-block: 14px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: center; justify-content: space-between; }
+.mark { font-family: var(--display); font-size: 1.5rem; text-decoration: none; }
+.mark em { color: var(--gold-soft); }
+nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+nav a { font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--on-dark-soft); padding: 6px 0; }
+nav a:hover { color: var(--gold-soft); }
+
+.hero { position: relative; color: var(--on-dark); background: var(--ink) url("media/hero.jpg") center 35% / cover; }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(21,17,14,.88) 0%, rgba(21,17,14,.6) 50%, rgba(21,17,14,.22) 100%), linear-gradient(0deg, rgba(21,17,14,.75), rgba(21,17,14,0) 55%); }
+.hero .wrap { position: relative; max-width: none; padding-block: clamp(64px, 11vw, 140px) clamp(48px, 7vw, 88px); }
+@media (min-width: 900px) { .hero .wrap, header .wrap { padding-left: 46px; padding-right: 46px; } }
+.hero .label { color: var(--gold-soft); }
+.hero h1 { font-size: clamp(3.2rem, 9vw, 7.6rem); line-height: .98; max-width: 11ch; }
+.hero h1 em { color: var(--gold-soft); }
+.hero p.lede { font-size: 1.25rem; font-weight: 300; max-width: 46ch; margin: 34px 0 0; }
+.hero .meta { margin: 44px 0 0; padding-top: 18px; border-top: 1px solid rgba(243,233,218,.28); font-size: .95rem; color: var(--on-dark-soft); max-width: none; }
+
+.felt { height: 54px; background-color: var(--felt); background-position: center; background-repeat: repeat-x; background-size: 104px 54px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 54'%3E%3Cg fill='none' stroke='%23a8321f' stroke-width='5' stroke-linecap='round'%3E%3Cpath d='M52 50C52 30 40 14 27 16C15 18 15 33 25 34C33 34 34 25 28 24'/%3E%3Cpath d='M52 50C52 30 64 14 77 16C89 18 89 33 79 34C71 34 70 25 76 24'/%3E%3C/g%3E%3Cpath d='M52 10l5 7-5 7-5-7z' fill='%23e8ab45'/%3E%3C/svg%3E"); }
+
+section > .wrap { padding-block: clamp(72px, 10vw, 136px); }
+section h2 { font-size: clamp(2.6rem, 6vw, 4.6rem); margin-bottom: 36px; }
+section h2 em { color: var(--red); }
+.dark { background: var(--ink); color: var(--on-dark); }
+.dark .label { color: var(--gold); }
+.dark h2 em, .dark h3 em { color: var(--gold-soft); }
+.two { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: start; }
+@media (min-width: 900px) { .two { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 80px; } .two.flip > :first-child { order: 2; } .stick { position: sticky; top: 100px; } }
+figure { margin: 0; }
+figure img, figure video { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 3px; }
+figcaption { font-size: .9rem; color: var(--text-soft); margin-top: 12px; }
+.dark figcaption { color: var(--on-dark-soft); }
+
+.three { display: grid; grid-template-columns: minmax(0, 1fr); gap: 44px; }
+@media (min-width: 900px) { .three { grid-template-columns: repeat(3, minmax(0, 1fr)); } .three > :nth-child(2) { margin-top: 72px; } .three > :nth-child(3) { margin-top: 144px; } }
+.three h3 { font-size: 2.2rem; margin: 24px 0 14px; }
+.three p { color: var(--on-dark-soft); }
+
+.reading { margin-top: 56px; padding: clamp(28px, 4vw, 48px); background: #fbf5ea; border-radius: 3px; }
+.dark .reading { background: #241c17; }
+.reading h3 { font-size: 1.9rem; margin-bottom: 18px; }
+.reading h3 em { color: var(--red); }
+.dark .reading h3 em { color: var(--gold-soft); }
+.reading p:last-child { margin-bottom: 0; }
+.big { font-family: var(--display); font-size: clamp(1.8rem, 3.6vw, 2.7rem); line-height: 1.25; max-width: 26ch; margin-bottom: 1em; text-wrap: balance; }
+
+.refs { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.refs li { padding-left: 2em; text-indent: -2em; max-width: 78ch; overflow-wrap: anywhere; }
+details { border-top: 1px solid #cdbda6; padding: 18px 0; }
+details:last-of-type { border-bottom: 1px solid #cdbda6; }
+summary { font-family: var(--display); font-size: 1.6rem; cursor: pointer; }
+details p { margin-top: 16px; white-space: pre-line; overflow-wrap: anywhere; }
+.sub { font-size: 1.9rem; margin: 64px 0 18px; }
+footer { background: var(--ink); color: var(--on-dark-soft); }
+footer .wrap { padding-block: 40px; font-size: .95rem; }
+footer p { margin: 0; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="mark" href="#top">Issyk-Kul <em>Home</em></a>
+  <nav aria-label="Sections"><a href="#home">Home</a><a href="#animals">Animals</a><a href="#learning">Learning</a><a href="#hope">Hope</a><a href="#sources">Sources</a><a href="#original">My original</a></nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <p class="label">Reflection and Learning Journal 3</p>
+  <h1>Between the <em>lake</em> and the mountains</h1>
+  <p class="lede">The house I grew up in stands between Issyk-Kul lake and the northern Tian Shan. It had hot food and warmth every day of my life.</p>
+  <p class="meta">Eldar Erik Uulu · RELI 230, Climate Anxiety and Spiritual Resilience · Prompts #8, #10 and #11</p>
+</div></div>
+<div class="felt" aria-hidden="true"></div>
+
+<section id="home"><div class="wrap">
+  <div class="two">
+    <div>
+      <p class="label">Prompt #8 · Where is your heart at home?</p>
+      <h2>The kid who came home <em>late and dirty</em></h2>
+      <p>When I hear the word home, the first thing that comes to my mind is the house I grew up in, right between Issyk-Kul lake and the northern Tian Shan mountains. It had hot food and warmth every day of my life. The cats playing around and the local birds singing in the garden remind me that I am home. I could smell the delicious food my mom or dad made every day at 9pm, right by the gate. My parents and sisters were there, waiting for the kid who came from soccer practice very late and dirty.</p>
+      <p>I remember the summer days when all the fruit in the garden was ripe and the smell of the apricots attracted bees. That is also where I have my allergy. With the fruit came the duty to collect it and make homemade juice from apricots and apples, and kompot, a sweet drink made by simmering fruit in water with sugar. I still remember collecting with my whole family, everybody healthy, happy and working together on the juice we would enjoy all year. My mother told me the most important step is to steam the glass bottles, so the juice can be stored for years without mold or any chemicals.</p>
+    </div>
+    <figure class="stick"><video src="media/cholpon-ata.mp4" poster="media/cholpon-ata.jpg" muted loop playsinline controls aria-label="Aerial video of Cholpon-Ata on the shore of Issyk-Kul"></video><figcaption>Cholpon-Ata, on the shore of Issyk-Kul. Video: Kol Shum.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="dark"><div class="wrap">
+  <p class="label">The garden</p>
+  <h2>The highest part of <em>the tree</em></h2>
+  <div class="three">
+    <article><figure><video src="media/apricots.mp4" poster="media/blossom.jpg" muted loop playsinline controls aria-label="Apricot trees blossoming in Batken, Kyrgyzstan"></video></figure>
+      <h3>The first <em>apricots</em></h3><p>While you collect the apricots, you try the nicest out of hundreds, and you enjoy it at the highest part of the tree, where they ripen first and turn reddish from the sun. My sisters were always by my side, handing me empty buckets and hoping I would not fall.</p></article>
+    <article><figure><img src="media/village.jpg" alt="Houses and gardens of Cholpon-Ata seen from above"></figure>
+      <h3>The warm <em>roof</em></h3><p>The tree grew so big that it was easy to collect from the roof of our storage. The roof was so warm that I would put my cap under my head and sleep under blue skies. I could see the whole neighborhood and kids playing soccer, so I knew when to go join them.</p></article>
+    <article><figure><img src="media/blossom.jpg" alt="Apricot branches in blossom in Batken"></figure>
+      <h3>Green, with <em>salt</em></h3><p>My father taught me how to plant trees and care for them through the seasons. You wait with patience for the day you can enjoy the fruit. Sometimes you try it while it is still green, with salt, which means the day is closer than ever. I used to bring a box to my aunt, who loves our apricots.</p></article>
+  </div>
+  <p style="margin-top:56px" class="label">Pictured: apricot blossom in Batken, in the south of Kyrgyzstan, and Cholpon-Ata from above</p>
+</div></section>
+
+<section id="animals"><div class="wrap">
+  <div class="two flip">
+    <div>
+      <p class="label">Prompt #8 · The animals</p>
+      <h2>They saw bulls. I saw <em>friends.</em></h2>
+      <p>We also had animals at home, around 20 to 30 sheep and some bulls, and I used to take care of them. It taught me responsibility. If I forgot to feed them, they would be hungry the whole day. There were times when I did not make it, or I thought I had fed them but I had not, and it made me feel so bad.</p>
+      <p>The sheep would come up to me, not afraid, and the big bulls recognized me as their friend. Once, when we had to sell them, three or four big guys came to see the bulls. They saw me feeding bulls that were ten times bigger than me, and I was not afraid, because we were friends. They were shocked.</p>
+      <p>I feel like I have roots leading to that place all the time. Part of me misses those days and wants to go home, see it with my own eyes and look for the feelings I had as a kid. When life is hard, I think about those days and how far I have come, far from home and from my family. That makes me value that place even more.</p>
+    </div>
+    <figure class="stick"><img src="media/sheep.jpg" alt="Sheep grazing under blossoming apricot trees in Batken"><figcaption>Sheep under apricot trees in Batken. Video still: Attokurov Nursultan; drone footage by @azimto.</figcaption></figure>
+  </div>
+  <div class="reading">
+    <h3>Connecting to the <em>reading</em></h3>
+    <p><strong>Kith.</strong> Kith means intimate knowledge of a deeply familiar landscape (Crawford O'Brien 142). The garden, the roof and the animals are my kith.</p>
+    <p><strong>Kincentric ecology.</strong> Salmón sees nature as an extended family (148). We cared for the trees, and they fed us all year. We fed the sheep and the bulls, and they trusted us.</p>
+    <p><strong>Personhood.</strong> Nuu-chah-nulth philosophy respects the distinct personhood of all living beings (147). The men came to see bulls to buy. To me the bulls were friends who recognized me.</p>
+    <p><strong>Responsibility.</strong> The chapter describes the Islamic teaching that people are “personally responsible for the care and preservation of their brethren communities,” human, plant or animal (158). When I forgot to feed the animals and felt so bad, I was learning that responsibility.</p>
+    <p><strong>Missing our relatives.</strong> Kimmerer says we miss our relatives in nature, and they miss us too (149). When part of me misses home, I miss the trees and the animals along with my family.</p>
+  </div>
+</div></section>
+<div class="felt" aria-hidden="true"></div>
+
+<section id="learning" class="dark"><div class="wrap">
+  <p class="label">Prompt #10 · Appropriation and learning</p>
+  <h2>Playing the <em>komuz</em> for visitors</h2>
+  <p>When someone uses a culture that isn't theirs, I am often happy and excited. I believe it can be the deepest way to express interest and engagement. During the Nomad Games in my hometown, there are athletes from more than 100 countries. Seeing them celebrate our nomad culture is fun, and I get the opportunity to share it with them.</p>
+  <p>I played the komuz, a traditional instrument, for visitors, and their interest and excitement made it fun for me too. Those are the moments I want to live. Coming to America to learn about its culture and people was also one of my biggest dreams, and experiencing it was very fun.</p>
+  <div class="reading">
+    <h3>Connecting to the <em>reading</em></h3>
+    <p><strong>Power.</strong> The reading helped me see why my experience felt good. Cultural appropriation reinforces inequality, while cultural exchange done right advances justice (198). At the Games I was sharing my own culture with people who wanted to learn.</p>
+    <p><strong>Harm.</strong> It is different when a practice is taken out of its meaning. Smudging is a meaningful part of ceremony for many Native people, but it has become common among outsiders, and the demand for white sage has led to overharvesting (196).</p>
+    <p><strong>Copying or learning.</strong> Bucar says appropriation “relies on, and contributes to existing forms of structural injustice” (qtd. in Crawford O'Brien 193). The chapter asks us to learn the history, go where we have permission and look for ways to give back (195). For me, that is the line between copying and learning.</p>
+  </div>
+</div></section>
+
+<section id="hope"><div class="wrap">
+  <p class="label">Prompt #11 · Envision hope</p>
+  <h2>Something you <em>choose and do</em></h2>
+  <p class="big">I think hope is a strong belief in something. It could be anything, but it is so strong that it helps people overcome challenges.</p>
+  <p>Now I think of hope as something you choose and do, a decision affected by a person's culture and experience. I believe my mom is the most hopeful person, and in a way it brings good luck. When you hope and take action, I believe it will happen for sure.</p>
+  <div class="reading">
+    <h3>Connecting to the <em>reading</em></h3>
+    <p><strong>Active Hope.</strong> My definition is closest to what Stoknes calls Active Hope, the belief that if I do my part, everything will be fine (218).</p>
+    <p><strong>The sailor.</strong> Desmond Tutu's image challenges me. He says hope is a sailor in a storm who keeps rowing, whatever the odds (218). We both see hope as something you do.</p>
+    <p><strong>The kettle.</strong> With climate change, one person's action can look small, but adrienne maree brown's boiling kettle shows how small bubbles add up to a full boil (225). Feeding the animals every day was a small action too, and they depended on it.</p>
+  </div>
+</div></section>
+<div class="felt" aria-hidden="true"></div>
+
+<section id="sources"><div class="wrap">
+  <h2>Works <em>cited</em></h2>
+  <ul class="refs">
+    <li>Attokurov, Nursultan [@attokurovnm]. “Kyrgyzstan. Apricot blossom in Batken.” Drone footage by @azimto. <i>Instagram</i>, 2 Apr. 2026, <a href="https://www.instagram.com/p/DWoUGPyjWSY/">www.instagram.com/p/DWoUGPyjWSY/</a>.</li>
+    <li>brown, adrienne maree. <i>Emergent Strategy: Shaping Change, Changing Worlds</i>. AK Press, 2017. Discussed in Crawford O'Brien 225.</li>
+    <li>Bucar, Liz. <i>Stealing My Religion: Not Just Any Cultural Appropriation</i>. Harvard University Press. Quoted in Crawford O'Brien 193.</li>
+    <li>Crawford O'Brien, Suzanne. <i>Climate Anxiety and Spiritual Resilience: A Guide to Kinship, Justice, and Hope</i>. Bloomsbury Academic, 2026.</li>
+    <li>Kol Shum [@kol.shum.09]. Video of Cholpon-Ata. <i>Instagram</i>, 9 Oct. 2026, <a href="https://www.instagram.com/p/DeReL9jsrqe/">www.instagram.com/p/DeReL9jsrqe/</a>.</li>
+    <li>Salmón, Enrique. “Kincentric Ecology: Indigenous Perceptions of the Human–Nature Relationship.” <i>Ecological Applications</i>, vol. 10, no. 5, Oct. 2000, pp. 1327–32. Discussed in Crawford O'Brien 148.</li>
+    <li>Stoknes, Per Espen. <i>What We Think About When We Try Not to Think About Global Warming</i>. Chelsea Green, 2015. Discussed in Crawford O'Brien 218.</li>
+    <li>Photograph at the top of the page: Cholpon-Ata, Issyk-Kul. Photographer not identified.</li>
+  </ul>
+  <p style="margin-top:32px">Kimmerer, Tutu and the Nuu-chah-nulth and Islamic teachings are cited as they are discussed in Crawford O'Brien.</p>
+
+  <div id="original">
+    <h2 class="sub" style="font-size:clamp(2.2rem,4.5vw,3.4rem)">My original words, <em>unedited</em></h2>
+    <p>This is what I wrote before any editing.</p>
+    <details><summary>Prompt #8: home</summary><p>When i hear the word Home, first thing that comes to my mind is the house that i grew up in, located right in between the Issyk Kul lake, and northern Tian Shan mountain range. It was the house that had hot food and wamrth every day of my life. I see the cats playing arround and the sound of local birds singing at the garden reminds of me of that i am at home, i could smell the delicios food that was made by my mom or dad everyday at 9pm right by the gate. There was my parents and my sisters, waiting for the kid that comes from soccer practices very late and dirty. I remember the summer days, when all the fruits at the garden is riped and the smell of the appricote attracks bees, thats where i have the allergy, funny enough the beautifull turkish carperts with the symmetric &quot;double knot&quot; that loops yarn around two warp threads at once. and with that comes the duty to collect them and make home made juice, out of abricote, apple, and a classic, non-alcoholic sweet beverage made by simmering fresh, frozen, or dried fruit in water with sugar. I still remember collecting them with my whole family and everybody is healthy, happy and working together to make the juices that we will enjoy the whole year. Remeber how my mother was telling me that the most important step is to steam the bottles, they are made of glass, and when we put them inside, it can be stored for years without any mold or bad things happening to the juice without any chemicals, and while u are collecting the apricots, u try the best of the best, nicest out of the hunders apricote and u enjoy it while you are on the highest part of the tree, thats where usually apricots ripes the first because of the sun, and how reddish it becomes. And my sisters always by my side, so they could help me to collect it, and get me the empty buckets to fill. Hoping that i will not fall out of the tree, And funny enough, the apricote tree grew so big that it was easy to collect it on the rood of the storage we had, so i usually will climd up there, and the roof is so warm, and put your cap under your head and just sleep under blue skyes, and i could see the whole neighberhood, and how they play soccer outside, so i knew when to go outside and play soccer with friends. And my father, who tought me how to plant trees and how to take care of them troughout the seasons. I learned how to take care of it, and how u could enjoy the fruits when the time comes, and u wait with patience to that day, sometimes u tri it while its green green, not riped, with salt, meaning that the day is closer than never. And i used to get a box of them when i used to visit my aunt, she loves out apricots. I feel like i have roots leading to that place all the time, and as if part of me missing those days, wants to go home and see it with eyes and look for the feelins i felt while i was a kid. When things go wrong and life is hard, i always think about those days, and i think how far i have come, far from home, far from my family, and that makes me even more to go there and value that place.</p></details>
+    <details><summary>Prompt #8: the animals</summary><p>regarind the animal we had, we had around 20-30 sheeps, we had bulls at home, so i used to take care of them, and it tought me the responsibility, of how if i forget them to feed, they would be hungry the whole day, and there were times that i did not make it or i thought i have fed them but not, it made me feel so bad, and how everything the sheeps come up to me, not afraid, and how big bulls recognize me as they friend and i used to feed them, there was a case, when we had to sell them, there were big 3-4 guys came to see the bulls and they saw me feeding the bulls that are 10 times bigger then me, me being not afraid, and how we used to be friends, they were shocked</p></details>
+    <details><summary>Prompt #10</summary><p>In a way when someone is use a culture that wasnt theirs, i am so happy, i feel excited about it, i believe its the deepest way to express the interest and engagement. During the Nomad games in my hometown, there are athletes from more than 100 countries, and seeing they celebrating our nomad culture is fun and i have the opportunity to share about it with them. I played traditional music instrument Komuz to people who were visiting and seeing they intereset and excitment, actually make me have fun. Those are the moments that i wanna leave, and visiting America was one of the biggest dreams to learn about the culture and the people around him, and actually expereinceing was very fun.</p></details>
+    <details><summary>Prompt #11</summary><p>hope i think is a strong believe in something, could be anything, but it is that strong that effects and helps people to overcome challenges. 4. now i think of hope is something u choose and do, take actions on it, i think it is a decisions that is effected my the culture and the experience of an individual. and i believe my mome is the most hopefull person, and in a way it brings good luck i beleive, when u hope, and take actions upon, i beleive that will happen for sure.</p></details>
+    <h3 class="sub">How I used AI</h3>
+    <p>I used Claude to ask me brainstorming questions, to edit my writing, to draft the “Connecting to the reading” paragraphs and the headings, and to build this website. My unedited text is above.</p>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap"><p>RELI 230 · Reflection and Learning Journal 3 · Fall 2026</p></div></footer>
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const io = new IntersectionObserver(es => es.forEach(x => x.isIntersecting ? x.target.play().catch(() => {}) : x.target.pause()), { threshold: .3 });
+  document.querySelectorAll('video').forEach(v => io.observe(v));
+}
+</script>
+</body>
+</html>
